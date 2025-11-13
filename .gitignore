@@ -1,0 +1,15 @@
+# Ignora la base de datos
+*.db
+
+# Logs y archivos temporales
+*.log
+*.temp
+
+# Ignora directorios de entornos especificos
+.vscode
+.idea
+.DS_Store
+
+# Pruebas locales
+pruebas.py
+__pycache__/
