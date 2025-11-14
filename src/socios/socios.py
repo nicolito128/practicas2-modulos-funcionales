@@ -154,19 +154,17 @@ class Socio:
                 print("! Intente de nuevo.")
         self.categoria = categoria_in
 
-def ingresar_full() -> Socio:
-    nuevo_socio: Socio = Socio()
-
-    print("========== Ingreso de nuevo Socio ==========")
-    nuevo_socio.pedir_dni()
-    nuevo_socio.pedir_nombre()
-    nuevo_socio.pedir_apellido()
-    nuevo_socio.pedir_genero()
-    nuevo_socio.pedir_email()
-    nuevo_socio.pedir_direccion()
-    nuevo_socio.pedir_telefono()
-    nuevo_socio.pedir_categoria()
-
-    return nuevo_socio
-
-__all__ = ["Socio", "ingresar_full"]
+    def to_dict(self) -> dict[str, any]:
+        return {
+            "dni": self.dni,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "genero": self.genero,
+            "email": self.email,
+            "direccion": self.direccion,
+            "telefono": self.telefono,
+            "categoria": self.categoria,
+            "fecha_creacion": self.fecha_creacion,
+            "fecha_actualizado": self.fecha_actualizado,
+            "fecha_baja": self.fecha_baja
+        }

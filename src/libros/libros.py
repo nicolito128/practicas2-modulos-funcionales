@@ -3,6 +3,7 @@ Módulo de gestión de libros
 '''
 from dataclasses import dataclass
 from datetime import datetime
+import almacen
 
 @dataclass
 class Libro:
@@ -135,19 +136,16 @@ class Libro:
                 print("! Intente de nuevo.")
         self.ejemplares = ej_in
 
-
-def ingresar_full() -> Libro:
-    nuevo_libro: Libro = Libro()
-
-    print("========== Ingreso de nuevo Libro ==========")
-    nuevo_libro.pedir_isbn()
-    nuevo_libro.pedir_titulo()
-    nuevo_libro.pedir_autor()
-    nuevo_libro.pedir_editorial()
-    nuevo_libro.pedir_genero()
-    nuevo_libro.pedir_anio()
-    nuevo_libro.pedir_ejemplares()
-
-    return nuevo_libro
-
-__all__ = ["Libro", "ingresar_full"]
+    def to_dict(self) -> dict[str, any]:
+        return {
+            "isbn": self.isbn,
+            "titulo": self.titulo,
+            "autor": self.autor,
+            "editorial": self.editorial,
+            "genero": self.genero,
+            "anio": self.anio,
+            "ejemplares": self.ejemplares,
+            "fecha_creacion": self.fecha_creacion,
+            "fecha_actualizado": self.fecha_actualizado,
+            "fecha_baja": self.fecha_baja,
+        }

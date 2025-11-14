@@ -5,6 +5,9 @@
 *.log
 *.temp
 
+# Data
+data/**/*.json
+
 # Ignora directorios de entornos especificos
 .vscode
 .idea
