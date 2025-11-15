@@ -3,11 +3,10 @@ Módulo de gestión de circulaciones: prestamos y devoluciones
 '''
 from dataclasses import dataclass
 from datetime import datetime
-import almacen
 
 @dataclass
 class Circulacion:
-    id_socio: str
+    id_socio: int
     isbn_libro: str
     fecha_prestamo: str
     fecha_devolucion: str | None
@@ -21,7 +20,15 @@ class Circulacion:
     def registrar_devolucion(self) -> None:
         self.fecha_devolucion = datetime.today().strftime('%Y-%m-%d')
 
-def registrar_prestamo(id_socio: str, isbn_libro: str) -> Circulacion:
+    def to_dict(self) -> dict:
+        return {
+            "id_socio": self.id_socio,
+            "isbn_libro": self.isbn_libro,
+            "fecha_prestamo": self.fecha_prestamo,
+            "fecha_devolucion": self.fecha_devolucion
+        }
+
+def registrar_prestamo(id_socio: int, isbn_libro: str) -> Circulacion:
     nuevo_prestamo: Circulacion = Circulacion()
     nuevo_prestamo.id_socio = id_socio
     nuevo_prestamo.isbn_libro = isbn_libro
@@ -66,3 +73,7 @@ def actualizar_circulacion(c: Circulacion) -> None:
             c.fecha_devolucion = fecha_in
         elif opcion == "3":
             loop = False
+
+# Implementar el menú de circulacion
+def menu_circulacion() -> None:
+    print("=== Menú de Circulación ===")
